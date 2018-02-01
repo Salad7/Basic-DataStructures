@@ -10,6 +10,15 @@ public class LinkedList {
 
     }
 
+    public Node removeItemGivenAddress(){
+        System.out.print(head);
+        System.out.print("\n");
+        System.out.print(head.getNext());
+        System.out.print("\n");
+        return null;
+
+    }
+
     public void addWithNumber(int n){
         Node node = new Node();
         node.setNum(n);
@@ -28,7 +37,6 @@ public class LinkedList {
             }
         }
         System.out.print("\n");
-
     }
 
     public void add(Node n){
@@ -48,6 +56,26 @@ public class LinkedList {
     }
 
     public Node remove(int val){
+        Node temp = null;
+        if(head == null){
+            return null;
+        }else{
+            temp = head;
+            while(temp.getNext() != null) {
+                if (temp.getNext().num == val) {
+                    Node deletedNode = temp.getNext();
+                    temp.setNext(temp.getNext().getNext());
+                    temp.getNext().setPrev(temp);
+                    return deletedNode;
+                }else{
+                    temp = temp.getNext();
+                }
+            }
+        }
+        return null;
+    }
+
+    public Node removeDuplicates(int val){
         Node temp = null;
         if(head == null){
             return null;

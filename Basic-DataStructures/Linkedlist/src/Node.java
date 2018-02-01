@@ -2,6 +2,7 @@ public class Node {
 
 
     int num;
+    int freq;
     Node next;
     Node prev;
 
@@ -9,6 +10,7 @@ public class Node {
     Node(){
         num =0;
         next = prev =  null;
+        freq = 0;
     }
 
     public int getNum() {

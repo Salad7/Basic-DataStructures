@@ -17,6 +17,10 @@ public class MainActivity {
         linkedList.print();
         System.out.println("Printing reverse");
         linkedList.printReverse();
+        System.out.println("Printing address of head");
+        linkedList.removeItemGivenAddress();
+
+
 
 
     }
