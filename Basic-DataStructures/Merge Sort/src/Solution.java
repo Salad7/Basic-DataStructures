@@ -6,12 +6,20 @@ import java.lang.*;
             ArrayList<Integer> items = new ArrayList<>();
             items.add(5);
             items.add(4);
-            items.add(3);
+            items.add(7);
             items.add(2);
             items.add(1);
+            items.add(7);
+            items.add(1);
+            items.add(3);
+            items.add(7);
+            items.add(4);
+            items.add(7);
+            items.add(7);
+            items.add(1);
             items.add(3);
             items.add(1);
-            items.add(1);
+            items.add(66);
             majorityElement(items);
         }
 
@@ -29,21 +37,22 @@ import java.lang.*;
             for(int i = 0; i < sorted.size(); i++){
                 System.out.println("Item: "+sorted.get(i));
             }
-//            for(int i =0; i < sorted.size()-1; i++){
-//                int storage = 1;
-//                int count = 0;
-//                //int subIndex = i+1;
-//                while(i+1 < sorted.size() && sorted.get(i+1).intValue() == sorted.get(i).intValue()){
-//                    count+=1;
-//                    i+=1;
-//                }
-//                if(count > hashmap.get("count")){
-//                    hashmap.put("count",count);
-//                    hashmap.put("index",storage);
-//                }
-//            }
+            for(int i =0; i < sorted.size(); i++){
+                int storage = i;
+                int count = 0;
+                //int subIndex = i+1;
+                while(i< sorted.size() && sorted.get(i).intValue() == sorted.get(storage).intValue()){
+                    count+=1;
+                    i+=1;
+                }
+                if(count > hashmap.get("count")){
+                    hashmap.put("count",count);
+                    hashmap.put("index",storage);
+                }
+            }
 
-            //System.out.println("Value that shows up the most "+sorted.get(hashmap.get("index")));
+            System.out.println("Value that shows up the most "+sorted.get(hashmap.get("index")));
+            //System.out.println("Shows up a total amount of: "+sorted.get(hashmap.get("count")));
             return sorted.get(hashmap.get("count"));
         }
 
