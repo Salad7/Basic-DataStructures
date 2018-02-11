@@ -52,7 +52,7 @@ import java.lang.*;
             }
 
             System.out.println("Value that shows up the most "+sorted.get(hashmap.get("index")));
-            //System.out.println("Shows up a total amount of: "+sorted.get(hashmap.get("count")));
+            //System.out.println("Shows up a total amount of: "+sorted.get(hashmap.get("count")));//
             return sorted.get(hashmap.get("count"));
         }
 
