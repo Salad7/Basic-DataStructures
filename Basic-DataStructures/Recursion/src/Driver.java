@@ -24,4 +24,25 @@ public class Driver {
     }
 
 
+
+public int count811(int num, int count){
+        int q = num/25;
+        int d = num/10;
+        int n = num/5;
+        int countQuaters = 0;
+
+    while(q > 1){
+            countQuaters += count811(num-(25*q),1);
+            q-=1;
+        }
+        while(d > 1){
+
+        }
+        while(n > 1){
+
+        }
+
+        return 1;
+}
+
 }
