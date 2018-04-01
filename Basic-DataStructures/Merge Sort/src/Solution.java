@@ -139,4 +139,76 @@ import java.lang.*;
 
 
 
-}
+
+
+        }
+
+
+
+//    public class Solution {
+//        public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+//            ArrayList<ListNode> newNums = new ArrayList<ListNode>();
+//            int carry  = 0;
+//            ListNode l1Start = l1;
+//            ListNode l2Start = l2;
+//            while(l1Start != null || l2Start != null){
+//                carry = newListAdd(l1Start,l2Start,carry,newNums);
+//                if(l1Start != null && l1Start.next != null){
+//                    l1Start = l1Start.next;
+//                }
+//                else {
+//                    l1Start = null;
+//                }
+//                if(l2Start != null && l2Start != null){
+//                    l2Start = l2Start.next;
+//                }
+//                else{
+//                    l2Start = null;
+//                }
+//            }
+//            if(carry != 0){
+//                newNums.add(new ListNode(carry));
+//            }
+//            return newNums.get(3);
+//        }
+//
+//        public int newListAdd(ListNode l, ListNode l2, int cry, ArrayList<ListNode> newNums){
+//            if(l == null){
+//                l = new ListNode(0);
+//            }
+//            if(l2 == null){
+//                l2 = new ListNode(0);
+//            }
+//            int newVal = (l2.val+l.val+cry);
+//            if(l2.val + l.val+cry > 9){
+//                newNums.add(new ListNode(newVal-10));
+//                return 1;
+//            }
+//            newNums.add(new ListNode(newVal));
+//            return 0;
+//        }
+//
+//
+//        public class LinkedListImp {
+//            ListNode first;
+//            LinkedListImp(){
+//                first = null;
+//            }
+//            public void add(ListNode node){
+//                if(first == null){
+//                    first = node;
+//                }
+//                else{
+//                    ListNode temp = new ListNode(3);
+//                    while(temp.next != null){
+//
+//                        temp = temp.next;
+//                    }
+//                    temp.next = node;
+//
+//                }
+//            }
+//        }
+//    }
+
+
