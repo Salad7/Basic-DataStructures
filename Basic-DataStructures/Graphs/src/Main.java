@@ -1,7 +1,8 @@
 public class Main {
     public static void main(String[] args){
     //initRouteBetweenNodes(); 4.2
-    initMinimumHeightBST();
+    //initMinimumHeightBST(); 4.3
+    initPrintNumPaths();
 
 
 
@@ -20,6 +21,10 @@ public class Main {
         BinarySearch binarySearch = new BinarySearch();
         int[] nodes = {1,2,3,4,5,6};
         binarySearch.beginBalancing(nodes);
+    }
+
+    public static void initPrintNumPaths(){
+        LongestPathInGraph longestPathInGraph = new LongestPathInGraph();
     }
 
 
