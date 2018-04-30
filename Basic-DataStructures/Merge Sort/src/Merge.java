@@ -40,11 +40,12 @@ public class Merge {
         printNodes(right);
         System.out.println("Left size: "+left.size());
         System.out.println("Right size: "+right.size());
-        while(left != null && right != null){
+        while(left.head != null && right.head != null){
             if(left.head.val < right.head.val){
                 newBounds.enqueue(left.head);
                 left.pop();
                 System.out.println("Removing left");
+                System.out.print("Left Queue Size: "+left.size);
                 leftStart++;
             }
             else{
@@ -72,9 +73,9 @@ public class Merge {
     }
 
     public Queue subset(Queue n,int start, int end){
-        ArrayList<Node> t = new ArrayList<>();
+        Queue t = new Queue();
         for(int i = start; i <= end; i++){
-            t.add(n.get(i));
+            t.enqueue(n.get(i));
         }
         return t;
     }
@@ -86,7 +87,7 @@ public class Merge {
         
         public void enqueue(Node n){
             if(head == null){
-                head = n;
+                head = tail = n;
             }
             else{
                 tail.next = n;
@@ -94,6 +95,8 @@ public class Merge {
             }
             size+=1;
         }
+
+
         
         public Node pop(){
             Node t = head;
@@ -126,9 +129,15 @@ public class Merge {
         }
 
         public Node get(int i){
-            
+            Node t = head;
+            int current = 0;
+            while(t != null && current != i){
+                t=t.next;
+                current++;
+            }
+            return t;
         }
-        
+
         
         
     }
