@@ -55,7 +55,7 @@ public class Mergesort {
     public void permuteInner(String original, String letter){
         //int indexWhereLetterShouldGo = 0;
         int newSize = original.length()+letter.length()-1;
-        for(int indexWhereLetterShouldGo = 0;indexWhereLetterShouldGo <= newSize; indexWhereLetterShouldGo++){
+        for(int indexWhereLetterShouldGo = 0;indexWhereLetterShouldGo < newSize; indexWhereLetterShouldGo++){
             String newLetter = "";
             newLetter+=letter;
             newLetter = original.substring(0,indexWhereLetterShouldGo)+newLetter;
