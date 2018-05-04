@@ -15,7 +15,7 @@ public class Main {
         totalMoves = new ArrayList<>();
         //map.put("00",n);
         //totalMoves.add(n);
-        step(0,0,6,n);
+        step(0,0,200,n);
     }
     public static void printBoard(){
         System.out.println("Board Size: "+totalMoves.size());
