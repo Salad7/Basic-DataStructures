@@ -7,7 +7,7 @@ public class Main {
         int test2 = -12;
         String t1 = Integer.toBinaryString(test1);
         String t2 = Integer.toBinaryString(test2);
-        
+
         if(t1.length() > t2.length()){
             int lastIndex = t2.length()-1;
             System.out.println("t1 > t2");
