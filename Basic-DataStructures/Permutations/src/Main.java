@@ -3,71 +3,60 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Main {
-
+    static String phrase = "abcd";
     static HashMap<String,ArrayList<String>> hashy;
     static ArrayList<String> list = new ArrayList<>();
     public static void main(String[] args){
-        String s = "abc";
-        initCombinations(s,0);
-    }
-    public static void initCombinations(String in, int startIndex){
-        if(hashy == null){
-            hashy = new HashMap<>();
-            ArrayList<String> list = new ArrayList<>();
-            list.add(in.charAt(0)+"");
-            hashy.put("stock",list);
-            initCombinations(in,startIndex+1);
+        merge(0,phrase.length()-1);
+        for (String perm: list
+             ) {
+            System.out.println(perm);
         }
-        else if(startIndex >= in.length()){
+        System.out.println("Size: "+list.size());
 
+    }
+
+
+    public static void merge(int startIndex, int endIndex){
+        String init = "";
+        if(endIndex-startIndex > 1){
+            String left = phrase.charAt(0)+"";
+            String right = phrase.charAt(1)+"";
+            permute(left,right);
+        }
+       for(int i = 2; i < phrase.length(); i++){
+               permute("",phrase.charAt(i)+"");
+       }
+    }
+
+    public static String permute(String left, String right){
+        if(left.length()+right.length() == 2){
+            list.add(left+right);
+            list.add(right+left);
         }
         else{
-            list = hashy.get("stock");
-            //for(int i = startIndex; i < in.length();){
-                for(int x  = 0; x < list.size(); x++){
-                    list = merge(in.charAt(startIndex)+"",list.get(x));
-                }
-            initCombinations(in,startIndex+1);
-
-            //}
+            ArrayList<String> oldList = new ArrayList<>();
+            oldList.addAll(list);
+            list.clear();
+            combine(oldList,right);
         }
+        return left+right;
     }
 
-    public static ArrayList<String> merge(String singleLetter, String subset){
-        String retString = "";
-        System.out.println("Single Letter: "+singleLetter+" subset: "+subset);
-        String front = singleLetter+subset;
-        String back = subset+singleLetter;
-        System.out.println("Front: "+front);
-        System.out.println("Back: "+back);
-        if(front.length() > 2){
-            //If there is atleast one midpoint
-            int midPoint = front.length()/2; // 1
-            //___
-            for(int i = 0; i < back.length(); i++){
-                if(i < midPoint){
-                    retString = back.charAt(i)+retString;
-                }
-                else if(i == midPoint){
-                    retString = retString+singleLetter;
-                }
-                else if(i >= midPoint){
-                    retString = retString+subset.charAt(i - midPoint);
-                }
+
+
+    public static void combine(ArrayList<String> temp, String letter){
+        for (String phrase: temp
+             ) {
+            list.add(letter+phrase);
+            list.add(phrase+letter);
+            for(int i = 1; i < phrase.length(); i++){
+                String newS = "";
+                newS+=phrase.substring(0,i)+letter+phrase.substring(i,phrase.length());
+                list.add(newS);
+                //list.add(phrase.substring(i,phrase.length())+letter+phrase.substring(0,i));
             }
-            System.out.println("Returned string: "+retString);
         }
-        ArrayList<String> newStocks = new ArrayList<>();
-        newStocks.add(front);
-        newStocks.add(back);
-        hashy.put("stock",newStocks);
-        return hashy.get("stock");
-
-
-    }
-
-    public static void mergeMiddle(int place){
-
     }
 
 
