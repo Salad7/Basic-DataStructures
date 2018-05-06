@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Main {
-    static String phrase = "abcd";
+    static String phrase = "sweet";
     static HashMap<String,ArrayList<String>> hashy;
     static ArrayList<String> list = new ArrayList<>();
     public static void main(String[] args){
@@ -54,7 +54,6 @@ public class Main {
                 String newS = "";
                 newS+=phrase.substring(0,i)+letter+phrase.substring(i,phrase.length());
                 list.add(newS);
-                //list.add(phrase.substring(i,phrase.length())+letter+phrase.substring(0,i));
             }
         }
     }
