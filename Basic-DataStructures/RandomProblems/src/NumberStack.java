@@ -17,6 +17,7 @@ public class NumberStack {
         size+=1;
     }
 
+
     public Number pop(){
         Number temp = r;
         r = r.next;

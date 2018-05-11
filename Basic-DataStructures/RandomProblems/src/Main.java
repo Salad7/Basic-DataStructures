@@ -37,9 +37,19 @@ public class Main {
 
         for (int i = 0; i < numPerms.size(); i++) {
             for (int x = 0; x < superOpPerms.size(); x++) {
-                formulate(numPerms.get(i), superOpPerms.get(i));
+                System.out.println("--------------------");
+                formulate(numPerms.get(i), superOpPerms.get(x));
+                System.out.println("--------------------");
+                System.out.println("");
+
             }
         }
+
+
+        for(int i =0; i < fitsValue.size(); i++){
+            System.out.println(fitsValue.get(i));
+        }
+        System.out.println(fitsValue.size()+"");
 
     }
 
@@ -118,34 +128,47 @@ public class Main {
      * @param operations
      */
     public static void formulate(String numbs, String operations){
+        operationStack = new OperationStack();
+        numberStack = new NumberStack();
         int i = 0;
         StringBuilder numbers = new StringBuilder(numbs);
         int[] ns = new int[4];
         for(int z = 0; z < ns.length; z++){
-            ns[z] = numbs.charAt(z);
+            ns[z] = Integer.parseInt(numbers.charAt(z)+"");
+            //System.out.println("Value: "+numbers.charAt(z));
+
         }
         while(i < operations.length()){
             Number  n = new Number(ns[i]+"");
             Operation o = new Operation(operations.charAt(i)+"");
             if(o.type == 1){
             //Get next number
-                Number next = new Number(numbers.charAt(i+1)+"");
+                Number next = new Number(ns[i+1]+"");
                 int value = o.performOperation(n.num,next.num);
-                numbers.replace(i,i,value+"");
-                //numberStack.push(new Number(value+""));
+                System.out.println("Doing calculation: "+n.num+" "+o.classification+" "+next.num);
+                System.out.println("Replacing: "+ns[i+1]+" with "+value);
+                ns[i+1] = value;
             }
             else {
+                System.out.println("Pushing: "+n.num);
+                System.out.println("Pushing: "+o.classification);
                 numberStack.push(n);
                 operationStack.push(o);
             }
             i++;
         }
-        numberStack.push(new Number(numbers.toString().charAt(numbers.length()-1)+""));
+        System.out.println("Pushing: "+ns[ns.length-1]);
+        numberStack.push(new Number(ns[ns.length-1]+""));
         while(operationStack.size > 0){
             Number a = numberStack.pop();
-            Number b = numberStack.pop();
-            System.out.println("Operation size: "+operationStack.size);
+            System.out.println("Popping: "+a.num);
+            System.out.println("Number Stack size: "+numberStack.size);
             Operation currentOp = operationStack.pop();
+            System.out.println("Popping: "+currentOp.classification);
+            Number b = numberStack.pop();
+            System.out.println("Popping: "+b.num);
+            System.out.println("Number Stack size: "+numberStack.size);
+
             int val = currentOp.performOperation(a.num,b.num);
             Number n = new Number(val+"");
             numberStack.push(n);
